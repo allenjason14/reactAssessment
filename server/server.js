@@ -7,14 +7,15 @@ var config = require('./config');
 
 var app = express();
 
+
 app.use(bodyParser.json());
-app.use(express.static(__dirname+'/public'));
+app.use(express.static(__dirname + './../public'));
 
 app.use(session({
+  secret: config.SESSION_SECRET,
   saveUninitialized: false,
   resave: false
 }));
-
 
 var mongoURI = config.MONGO_URI;
 var port = config.PORT;
